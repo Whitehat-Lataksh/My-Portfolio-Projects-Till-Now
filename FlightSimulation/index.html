@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+  <!--Extra Library-->
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+
+
+  <script src="./components/GameManager.js"></script>
+  <script src="./components/Rotation.js"></script>
+  <script src="./components/Target.js"></script>
+  <script src="./components/Birds.js"></script>
+
+</head>
+
+<body>
+
+  <a-scene background="color:#026F90">
+
+    <a-entity id="look" look-controls="false" camera position="0 2 20"></a-entity>
+
+    <!--Asset Management-->
+    <a-assets timeout="30000">
+      <a-asset-item id="terrainMap" src="./assets/models/terrain/scene.gltf"></a-asset-item>
+
+      <a-asset-item id="plane" src="./assets/models/airplane/scene.gltf"></a-asset-item>
+
+
+    </a-assets>
+
+    <!-- Terrain -->
+
+    <a-entity id="terrain" gltf-model="#terrainMap" position="0 0 0" scale="0.3 0.3 0.3"
+      animation="property: position; to: 0 0 1000;easing:linear; loop: true; dur: 100000" terrain-rotation target-ring
+      flying-birds>
+    </a-entity> 
+
+    <!-- Plane -->
+    <a-entity id="aeroplane" gltf-model="#plane" position="0 0 15" scale="1 1" rotation="0 90 0" plane-rotation
+      collision-detection dynamic-body="mass : 0">
+    </a-entity>
+
+    <!--Text-->
+
+    <a-entity id="Headers" position="0 0 0">
+      <a-entity position="0 17 0"
+        text="font : aileronsemibold; align : center; width : 50; color : black; value : FLIGHT SIMULATION">
+      </a-entity>
+      <!--Timer-->
+      <a-entity position = "-30 13 0"text="font : aileronsemibold; align : center; width : 30; color : white; value : TIME REMAINING : ">
+        <a-entity id="timer" position = "8 0 0"text="font : aileronsemibold; align : center; width : 30; color : white; value : mm:ss ">
+
+        </a-entity>
+      </a-entity>
+
+
+
+      <a-entity position = "-28.8 11.5 0"text="font : aileronsemibold; align : center; width : 30; color : white; value : TARGETS REMAINING : ">
+        <a-entity id="targets" position = "8 0 0"text="font : aileronsemibold; align : center; width : 30; color : white; value : 20 ">
+
+        </a-entity>
+      </a-entity>
+
+      <a-entity position = "-28.8 10 0"text="font : aileronsemibold; align : center; width : 30; color : white; value : SCORE : ">
+        <a-entity id="score" position = "8 0 0"text="font : aileronsemibold; align : center; width : 30; color : white; value : 0 ">
+
+        </a-entity>
+      </a-entity>
+
+
+      <a-entity id = "game-over"position = "0 0 0"text="font : aileronsemibold; align : center; width : 150; color : red; value : GAME OVER;" visible="false">
+      </a-entity>
+
+
+
+
+
+
+    </a-entity>
+
+  </a-scene>
+</body>
+
+</html>

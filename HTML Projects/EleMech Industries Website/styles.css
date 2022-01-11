@@ -1,0 +1,13 @@
+html{
+    scroll-behavior: smooth;
+}
+*{
+    background-color: #ececec;
+}
+.oxygen-gen{
+    width: 5000px;
+}
+
+.more{
+   display: none;
+}
